@@ -2,6 +2,10 @@
   import { range } from "./range.js";
   import { v4 } from "uuid";
 
+  import { collection, addDoc, getFirestore } from "firebase/firestore";
+
+  const db = getFirestore();
+
   let taskName;
   let questionAmount;
 
@@ -12,14 +16,16 @@
   let task = {
     name: "",
     uuid: v4(),
-    amount: finalQAmount,
+    amount: 0,
     questions: [],
+    mail: localStorage.getItem("email"),
   };
 
   let questionsCompleted = false;
 
   const createQuestions = (e) => {
     task["name"] = taskName;
+    task["amount"] = questionAmount;
     console.log("test");
     e.preventDefault();
     finalQAmount = questionAmount;
@@ -28,6 +34,12 @@
   const submitQuestion = (q, a) => {
     task["questions"] = [...task["questions"], { question: q, answer: a }];
     console.log(task);
+  };
+
+  const createNewTask = async () => {
+    const docRef = await addDoc(collection(db, "tasks"), task);
+
+    location.reload();
   };
 </script>
 
@@ -127,6 +139,7 @@
         <p class="text-center">Alle Fragen sind jetzt vollständig!</p>
 
         <button
+          on:click={createNewTask}
           class="mt-2 mb-20 w-64 absolute left-1/2 -translate-x-1/2 top-8 px-10 bg-indigo-500 text-white py-2.5 rounded-md font-medium hover:bg-indigo-600 transition"
           >Aufgabe speichern</button
         >

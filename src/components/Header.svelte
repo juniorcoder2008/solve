@@ -1,21 +1,22 @@
 <script>
   import Login from "./Login.svelte";
   import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+  import { firebase } from "../firebase";
 
   import { fade } from "svelte/transition";
 
-  const auth = getAuth();
+  const auth = getAuth(firebase);
 
   let authState = false;
 
-  if (localStorage.getItem("user") != null) {
-    if (localStorage.getItem("method") == "email") {
-      const user = localStorage.getItem("user");
-      signInWithEmailAndPassword(auth, user.email, user.password);
-      authState = true;
-    } else if (localStorage.getItem("method") == "google") {
-      authState = true;
-    }
+  if (
+    localStorage.getItem("name") != null &&
+    localStorage.getItem("method") == "email"
+  ) {
+    const email = localStorage.getItem("email");
+    const pass = localStorage.getItem("pass");
+    signInWithEmailAndPassword(auth, email, pass);
+    authState = true;
   }
 
   let showLoginPage = false;
@@ -30,9 +31,11 @@
   };
 
   const logout = () => {
-    signOut(auth);
+    signOut(auth).then(() => console.log("signed out"));
     authState = false;
-    localStorage.removeItem("user");
+    localStorage.removeItem("email");
+    localStorage.removeItem("name");
+    localStorage.removeItem("pass");
     location.reload();
   };
 </script>

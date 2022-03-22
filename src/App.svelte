@@ -2,6 +2,8 @@
   import Header from "./components/Header.svelte";
   import CreateTask from "./components/CreateTask.svelte";
   import SolveTask from "./components/SolveTask.svelte";
+
+  import { firebase } from "./firebase";
 </script>
 
 <main class="bg-gray-100 dark:bg-gray-900 h-full w-full">
