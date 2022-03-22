@@ -1,15 +1,51 @@
+<script>
+  import Login from "./Login.svelte";
+  import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+
+  import { fade } from "svelte/transition";
+
+  const auth = getAuth();
+
+  let authState = false;
+
+  if (localStorage.getItem("user") != null) {
+    if (localStorage.getItem("method") == "email") {
+      const user = localStorage.getItem("user");
+      signInWithEmailAndPassword(auth, user.email, user.password);
+      authState = true;
+    } else if (localStorage.getItem("method") == "google") {
+      authState = true;
+    }
+  }
+
+  let showLoginPage = false;
+
+  const showLogin = () => {
+    console.log("event", showLoginPage);
+    if (showLoginPage) {
+      showLoginPage = false;
+    } else if (!showLoginPage) {
+      showLoginPage = true;
+    }
+  };
+
+  const logout = () => {
+    signOut(auth);
+    authState = false;
+    localStorage.removeItem("user");
+    location.reload();
+  };
+</script>
+
 <header
-  class="flex gap-6 relative items-center justify-center h-20 border-b-2 border-solid border-gray-200"
+  class="flex gap-6 relative items-center justify-center h-20 border-b-2 border-solid border-gray-200 dark:border-gray-800"
 >
   <svg
-    class="w-20"
+    class="w-16 fill-indigo-500 dark:fill-white"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 958.89 489.51"
     ><defs
       ><style>
-        .e {
-          fill: rgb(31, 41, 55);
-        }
       </style></defs
     ><g id="a" /><g id="b"
       ><g id="c"
@@ -25,10 +61,37 @@
       ></g
     ></svg
   >
-  <div class="h-10 w-0.5 bg-gray-400" />
-  <h1 class="text-3xl text-indigo-500 font-black uppercase">Solve</h1>
-  <button
-    class="bg-indigo-500 text-white px-10 py-2.5 rounded-md absolute right-12 hover:bg-indigo-600 transition outline-none font-medium"
-    >Login</button
+  <div class="h-8 w-0.5 bg-indigo-300 dark:bg-gray-500" />
+  <h1
+    class="text-3xl text-indigo-500 font-black uppercase dark:text-indigo-400"
   >
+    Solve
+  </h1>
+  {#if !authState}
+    <button
+      on:click={showLogin}
+      class="bg-indigo-500 text-white px-10 py-2.5 rounded-md absolute right-24 hover:bg-indigo-600 transition outline-none font-medium"
+      >Login</button
+    >
+  {/if}
+  {#if authState}
+    <button
+      on:click={logout}
+      class="bg-red-500 text-white px-10 py-2.5 rounded-md absolute right-24 hover:bg-red-600 transition outline-none font-medium"
+      >Logout</button
+    >
+  {/if}
 </header>
+
+{#if showLoginPage}
+  <div class="container" transition:fade={{ duration: 100 }}>
+    <div
+      class="absolute top-20 right-96 hover:cursor-pointer z-50"
+      on:click={showLogin}
+    >
+      <div class="h-7 w-0.5 bg-gray-900 dark:bg-gray-100 rotate-45 absolute" />
+      <div class="h-7 w-0.5 bg-gray-900 dark:bg-gray-100 -rotate-45 absolute" />
+    </div>
+    <Login />
+  </div>
+{/if}

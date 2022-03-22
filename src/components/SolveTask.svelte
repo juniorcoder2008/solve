@@ -1,20 +1,20 @@
 <script>
-  let taskUUID;
+  import { db } from "../firebase";
+  import { collection, addDoc } from "firebase/firestore";
 
-  const startTask = (e) => {
-    e.preventDefault();
-  };
+  let taskUUID;
 </script>
 
 <div class="create-task ml-40 mt-20">
-  <h1 class="font-extralight uppercase text-3xl">
-    <span class="font-black text-indigo-500">Erledige</span> eine Aufgabe
+  <h1 class="font-extralight uppercase text-3xl dark:text-gray-300">
+    <span class="font-black text-indigo-500 dark:text-indigo-400">Erledige</span
+    > eine Aufgabe
   </h1>
 
-  <form on:submit={startTask}>
+  <form>
     <input
       bind:value={taskUUID}
-      class="pl-4 py-2.5 w-96 rounded-md mt-5 bg-gray-200 outline-none focus:text-blue-500 transition font-medium placeholder-gray-400 placeholder:font-light placeholder:tracking-wider"
+      class="pl-4 py-2.5 w-96 rounded-md mt-5 bg-gray-200 dark:bg-gray-800 outline-none focus:text-indigo-500 dark:focus:text-indigo-400 transition font-medium placeholder-gray-400 placeholder:font-light placeholder:tracking-wider"
       type="text"
       placeholder="xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     />

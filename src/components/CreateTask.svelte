@@ -1,12 +1,41 @@
-<script></script>
+<script>
+  import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-<div class="create-task ml-40 mt-12">
-  <h1 class="font-extralight uppercase text-3xl">
-    <span class="font-black text-indigo-500">Erstelle</span> eine Aufgabe
+  const auth = getAuth();
+
+  let authState = false;
+
+  let showNewTaskPage = false;
+
+  if (localStorage.getItem("user") != null) {
+    const user = localStorage.getItem("user");
+    signInWithEmailAndPassword(auth, user.email, user.password);
+    authState = true;
+  }
+
+  const newTaskPage = () => {
+    showNewTaskPage = !showNewTaskPage;
+  };
+</script>
+
+<div class="create-task ml-40 mt-12 relative">
+  <h1 class="font-extralight uppercase text-3xl dark:text-gray-300">
+    <span class="font-black text-indigo-500 dark:text-indigo-400">Erstelle</span
+    > eine Aufgabe
   </h1>
 
-  <p class="text-red-500 mt-2">
-    Du bist noch nicht angemeldet bzw. registriert. Melde dich an um eigene
-    Aufgaben zu erstellen!
-  </p>
+  {#if !authState}
+    <p class="text-red-500 mt-2 dark:text-red-400">
+      Du bist noch nicht angemeldet bzw. registriert. Melde dich an um eigene
+      Aufgaben zu erstellen!
+    </p>
+  {/if}
+  {#if authState}
+    <button
+      on:click={newTaskPage}
+      class="bg-green-500 hover:bg-green-600 transition text-white px-8 py-2.5 rounded-md absolute top-0 right-24"
+      >Neue Aufabe erstellen</button
+    >
+    <p class="text-green-500 dark:text-green-400">Du bist eingeloggt!</p>
+  {/if}
 </div>

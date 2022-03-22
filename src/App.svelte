@@ -4,7 +4,7 @@
   import SolveTask from "./components/SolveTask.svelte";
 </script>
 
-<main class="bg-gray-100 h-full w-full">
+<main class="bg-gray-100 dark:bg-gray-900 h-full w-full">
   <Header />
   <CreateTask />
   <SolveTask />
