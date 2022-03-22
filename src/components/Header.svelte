@@ -86,7 +86,7 @@
 {#if showLoginPage}
   <div class="container" transition:fade={{ duration: 100 }}>
     <div
-      class="absolute top-20 right-96 hover:cursor-pointer z-50"
+      class="close absolute top-20 right-96 hover:cursor-pointer z-50"
       on:click={showLogin}
     >
       <div class="h-7 w-0.5 bg-gray-900 dark:bg-gray-100 rotate-45 absolute" />
@@ -95,3 +95,9 @@
     <Login />
   </div>
 {/if}
+
+<style>
+  .close {
+    top: 5.5rem;
+  }
+</style>

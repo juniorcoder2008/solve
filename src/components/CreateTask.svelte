@@ -1,5 +1,6 @@
 <script>
   import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+  import NewTaskPage from "./NewTaskPage.svelte";
 
   const auth = getAuth();
 
@@ -13,7 +14,7 @@
     authState = true;
   }
 
-  const newTaskPage = () => {
+  const toggleTaskPage = () => {
     showNewTaskPage = !showNewTaskPage;
   };
 </script>
@@ -32,10 +33,28 @@
   {/if}
   {#if authState}
     <button
-      on:click={newTaskPage}
+      on:click={toggleTaskPage}
       class="bg-green-500 hover:bg-green-600 transition text-white px-8 py-2.5 rounded-md absolute top-0 right-24"
       >Neue Aufabe erstellen</button
     >
     <p class="text-green-500 dark:text-green-400">Du bist eingeloggt!</p>
   {/if}
 </div>
+{#if showNewTaskPage}
+  <div class="container">
+    <div
+      class="close absolute right-96 hover:cursor-pointer z-50"
+      on:click={toggleTaskPage}
+    >
+      <div class="h-7 w-0.5 bg-gray-900 dark:bg-gray-100 rotate-45 absolute" />
+      <div class="h-7 w-0.5 bg-gray-900 dark:bg-gray-100 -rotate-45 absolute" />
+    </div>
+    <NewTaskPage />
+  </div>
+{/if}
+
+<style>
+  .close {
+    top: 5.5rem;
+  }
+</style>

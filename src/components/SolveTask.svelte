@@ -20,7 +20,7 @@
     />
     <button
       type="submit"
-      class="bg-indigo-500 text-white px-10 py-2.5 rounded-md hover:bg-indigo-600 transition outline-none font-medium"
+      class="bg-indigo-500 ml-1 text-white px-10 py-2.5 rounded-md hover:bg-indigo-600 transition outline-none font-medium"
       >Aufgabe anfangen</button
     >
   </form>

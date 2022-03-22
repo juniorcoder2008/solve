@@ -29,6 +29,7 @@
     "firebase": "^9.6.9",
     "gsap": "^3.9.1",
     "sirv-cli": "^2.0.0",
-    "svelte-navigator": "^3.1.5"
+    "svelte-navigator": "^3.1.5",
+    "uuidv4": "^6.2.12"
   }
 }
