@@ -1,7 +1,7 @@
 <script>
   import Login from "./Login.svelte";
   import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
-  import { firebase } from "../firebase";
+  import { firebase } from "../../firebase";
 
   import { fade } from "svelte/transition";
 
