@@ -11,6 +11,9 @@ In diesem Projekt habe ich mit Svelte, Firebase und TailwindCSS gearbeitet. Dies
 
 ### Credits
 
-__Design__ von Samuel Thomas (*JuniorCoder*)  
-__Programmierung__ von Samuel Thomas (*JuniorCoder*)  
-__Ideen__ von Samuel Thomas (*JuniorCoder*), Maxim Malkov (*TrueWLAN*) und *Oliver Thomas*
+__Design:__ Samuel Thomas (*JuniorCoder*)  
+__Programmierung:__ Samuel Thomas (*JuniorCoder*)  
+__Ideen:__ Samuel Thomas (*JuniorCoder*), Maxim Malkov (*TrueWLAN*) und *Oliver Thomas*
+__Finden von Bugs:__ Maxim Malkov (*TrueWLAN*)
+
+TrueWLAN GitHub: https://github.com/TrueWLAN
