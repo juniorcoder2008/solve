@@ -14,19 +14,24 @@
   let showTask = false;
   let taskName = "";
 
+  let gotTask = false;
+
   const getTask = (e) => {
     e.preventDefault();
-    const q = query(collection(db, "tasks"), where("uuid", "==", taskUUID));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        taskName = doc.data().name;
-        doc.data().questions.forEach((el) => {
-          task = [...task, el];
+    if (!gotTask) {
+      const q = query(collection(db, "tasks"), where("uuid", "==", taskUUID));
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          taskName = doc.data().name;
+          doc.data().questions.forEach((el) => {
+            task = [...task, el];
+          });
         });
+        console.log(task);
+        showTask = true;
+        gotTask = true;
       });
-      console.log(task);
-      showTask = true;
-    });
+    }
   };
 
   const submitTask = (e) => {
