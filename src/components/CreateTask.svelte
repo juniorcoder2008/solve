@@ -52,7 +52,7 @@
   });
 </script>
 
-<div class="create-task ml-40 mt-12 relative">
+<div class="create-task xl:ml-40 md:ml-16 mt-12 relative">
   <h1 class="font-extralight uppercase text-3xl dark:text-gray-300">
     <span class="font-black text-indigo-500 dark:text-indigo-400">Erstelle</span
     > eine Aufgabe
@@ -67,7 +67,7 @@
   {#if authState}
     <button
       on:click={toggleTaskPage}
-      class="bg-green-500 hover:bg-green-600 transition text-white px-8 py-2.5 rounded-md absolute top-0 right-24"
+      class="bg-green-500 hover:bg-green-600 transition text-white px-8 py-2.5 rounded-md absolute top-0 xl:right-24 md:right-16"
       >Neue Aufabe erstellen</button
     >
     <div class="task-list mt-10 flex flex-col gap-5">

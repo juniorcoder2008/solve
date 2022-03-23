@@ -41,7 +41,7 @@
 </script>
 
 <header
-  class="flex gap-6 relative items-center justify-center h-20 border-b-2 border-solid border-gray-200 dark:border-gray-800"
+  class="flex gap-6 relative items-center xl:justify-center md:pl-16 xl:pl-0 h-20 border-b-2 border-solid border-gray-200 dark:border-gray-800"
 >
   <svg
     class="w-16 fill-indigo-500 dark:fill-white"
@@ -64,23 +64,23 @@
       ></g
     ></svg
   >
-  <div class="h-8 w-0.5 bg-indigo-300 dark:bg-gray-500" />
+  <div class="h-8 w-0.5 mt-1 bg-indigo-300 dark:bg-gray-500" />
   <h1
-    class="text-3xl text-indigo-500 font-black uppercase dark:text-indigo-400"
+    class="text-3xl mb-.5 text-indigo-500 font-black uppercase dark:text-indigo-400"
   >
     Solve
   </h1>
   {#if !authState}
     <button
       on:click={showLogin}
-      class="bg-indigo-500 text-white px-10 py-2.5 rounded-md absolute right-24 hover:bg-indigo-600 transition outline-none font-medium"
+      class="bg-indigo-500 text-white px-10 py-2.5 rounded-md absolute xl:right-24 md:right-16 hover:bg-indigo-600 transition outline-none font-medium"
       >Login</button
     >
   {/if}
   {#if authState}
     <button
       on:click={logout}
-      class="bg-red-500 text-white px-10 py-2.5 rounded-md absolute right-24 hover:bg-red-600 transition outline-none font-medium"
+      class="bg-red-500 text-white px-10 py-2.5 rounded-md absolute xl:right-24 md:right-16 hover:bg-red-600 transition outline-none font-medium"
       >Logout</button
     >
   {/if}
@@ -89,7 +89,7 @@
 {#if showLoginPage}
   <div class="container" transition:fade={{ duration: 100 }}>
     <div
-      class="close absolute top-20 right-96 hover:cursor-pointer z-50"
+      class="close absolute top-20 xl:right-96 md:right-44 hover:cursor-pointer z-50"
       on:click={showLogin}
     >
       <div class="h-7 w-0.5 bg-gray-900 dark:bg-gray-100 rotate-45 absolute" />
