@@ -58,7 +58,7 @@
   };
 </script>
 
-<div class="create-task xl:ml-40 md:ml-16 mt-20 dark:text-white">
+<div class="create-task xl:ml-40 lg:ml-16 mt-20 dark:text-white">
   <h1 class="font-extralight uppercase text-3xl dark:text-gray-300">
     <span class="font-black text-indigo-500 dark:text-indigo-400">Erledige</span
     > eine Aufgabe
@@ -67,13 +67,13 @@
   <form on:submit={getTask}>
     <input
       bind:value={taskUUID}
-      class="pl-4 py-2.5 mb-14 w-96 rounded-md mt-5 bg-gray-200 dark:bg-gray-800 outline-none focus:text-indigo-500 dark:focus:text-indigo-400 transition font-medium placeholder-gray-400 placeholder:font-light placeholder:tracking-wider"
+      class="pl-4 py-2.5 mb-14 w-96 rounded-lg mt-5 bg-gray-200 dark:bg-gray-800 outline-none focus:text-indigo-500 dark:focus:text-indigo-400 transition font-medium placeholder-gray-400 placeholder:font-light placeholder:tracking-wider"
       type="text"
       placeholder="xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     />
     <button
       type="submit"
-      class="bg-indigo-500 ml-1 text-white px-10 py-2.5 rounded-md hover:bg-indigo-600 transition outline-none font-medium"
+      class="bg-indigo-500 ml-1 text-white px-10 py-2.5 rounded-lg hover:bg-indigo-600 transition outline-none font-medium"
       >Aufgabe anfangen</button
     >
   </form>
@@ -92,14 +92,14 @@
           type="text"
           class="{'question-' +
             (task.indexOf(question) +
-              1)} pl-4 py-2.5 w-96 mb-10 rounded-md mt-2 bg-gray-200 dark:bg-gray-800 outline-none focus:text-indigo-500 dark:focus:text-indigo-400 transition font-medium"
+              1)} pl-4 py-2.5 w-96 mb-10 rounded-lg mt-2 bg-gray-200 dark:bg-gray-800 outline-none focus:text-indigo-500 dark:focus:text-indigo-400 transition font-medium"
           required
         />
       {/each}
       <br />
       <button
         type="submit"
-        class="bg-indigo-500 mb-10 text-white px-10 py-2.5 rounded-md hover:bg-indigo-600 transition outline-none font-medium"
+        class="bg-indigo-500 mb-10 text-white px-10 py-2.5 rounded-lg hover:bg-indigo-600 transition outline-none font-medium"
         >Aufgabe fertig</button
       >
     </form>
